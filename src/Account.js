@@ -6,7 +6,7 @@ Account.prototype = {
   deposit: function(amount) {
     return this.balance += amount
   },
-  withdraw: function() {
-    return 1500
+  withdraw: function(amount) {
+    return this.balance -= amount
   }
 }
