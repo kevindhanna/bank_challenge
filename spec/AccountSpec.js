@@ -20,9 +20,9 @@ describe('Account', function() {
       expect(function() {self.account.deposit(-500)}).toThrow('Amount must be positive')
     })
 
-    it('adds the transaction to the transaction history', function() {
+    it('adds the credit to the transaction history', function() {
       this.account.deposit(500, "12-12-2012")
-      
+
       expect(this.account.transactions).toEqual([{
         credit: 500,
         date: "12-12-2012"
@@ -49,6 +49,15 @@ describe('Account', function() {
       var self = this
       
       expect(function() {self.account.withdraw(5000)}).toThrow("Withdrawl amount exceeds current balance")
+    })
+
+    it('adds the debit to the transaction history', function() {
+      this.account.withdraw(500, "12-12-2012")
+      
+      expect(this.account.transactions[1]).toEqual({
+        debit: 500,
+        date: "12-12-2012"
+      })
     })
   })
   

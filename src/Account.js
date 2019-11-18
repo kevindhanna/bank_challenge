@@ -12,26 +12,32 @@ Account.prototype = {
       throw 'Amount must be positive'
     }
 
-    this.transactions.push({
-      credit: amount,
-      date: date
-    })
+    this.addTransaction('credit', amount, date)
 
     return this.balance += amount
   },
 
-  withdraw: function(amount) {
+  withdraw: function(amount, date) {
     if(amount > this.balance) {
       throw 'Withdrawl amount exceeds current balance'
     } else if (amount <= 0) {
       throw 'Amount must be positive'
     }
 
+    this.addTransaction('debit', amount, date)
+
     return this.balance -= amount
   },
 
   printStatement: function() {
     this.printer.print()
+  },
+
+  addTransaction: function(method, amount, date) {
+    this.transactions.push({
+      [method] : amount,
+      date: date
+    })
   }
 
 }
