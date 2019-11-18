@@ -1,43 +1,54 @@
-function Account(printer) {
-  this.balance = 0
-  this.transactions = []
-  this.printer = printer
-
-}
-
-Account.prototype = {
+(function(exports) {
   
-  deposit: function(amount, date) {
-    if(amount <= 0) {
-      throw 'Amount must be positive'
+  var self
+
+  function Account(printer) {
+    this.balance = 0
+    this.transactions = []
+    this.printer = printer
+    
+    self = this
+  }
+  
+  
+  Account.prototype = {
+    
+    deposit: function(amount, date) {
+      if(amount <= 0) {
+        throw 'Amount must be positive'
+      }
+  
+      addTransaction('credit', amount, date)
+  
+      return this.balance += amount
+    },
+  
+    withdraw: function(amount, date) {
+      if(amount > this.balance) {
+        throw 'Withdrawl amount exceeds current balance'
+      } else if (amount <= 0) {
+        throw 'Amount must be positive'
+      }
+  
+      addTransaction('debit', amount, date)
+  
+      return this.balance -= amount
+    },
+  
+    printStatement: function() {
+      this.printer.print(this.transactions)
     }
+    
+  }
+    
 
-    this.addTransaction('credit', amount, date)
-
-    return this.balance += amount
-  },
-
-  withdraw: function(amount, date) {
-    if(amount > this.balance) {
-      throw 'Withdrawl amount exceeds current balance'
-    } else if (amount <= 0) {
-      throw 'Amount must be positive'
-    }
-
-    this.addTransaction('debit', amount, date)
-
-    return this.balance -= amount
-  },
-
-  printStatement: function() {
-    this.printer.print(this.transactions)
-  },
-
-  addTransaction: function(method, amount, date) {
+  function addTransaction(method, amount, date) {
     obj = {}
     obj[method] = amount
     obj.date = date
-    this.transactions.push(obj)
+    self.transactions.push(obj)
   }
 
-}
+  exports.Account = Account
+
+})(this)
