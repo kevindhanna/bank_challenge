@@ -56,7 +56,7 @@ describe('Account', function() {
     it('adds the debit to the transaction history', function() {
       this.account.withdraw(500, this.date)
       
-      expect(this.account.transactions[1]).toEqual({
+      expect(this.account.transactions[0]).toEqual({
         debit: 500,
         date: this.date,
         balance: 1500

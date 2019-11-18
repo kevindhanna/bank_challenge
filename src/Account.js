@@ -48,7 +48,7 @@
     obj[method] = amount
     obj.date = date
     obj.balance = self.balance
-    self.transactions.push(obj)
+    self.transactions.unshift(obj)
   }
 
   exports.Account = Account
