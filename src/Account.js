@@ -43,7 +43,7 @@
     
 
   function addTransaction(method, amount, date) {
-    obj = {}
+    var obj = {}
     obj[method] = amount
     obj.date = date
     self.transactions.push(obj)
