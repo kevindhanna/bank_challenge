@@ -7,6 +7,9 @@ function Account() {
 Account.prototype = {
   
   deposit: function(amount) {
+    if(amount <= 0) {
+      throw 'Amount must be positive'
+    }
     return this.balance += amount
   },
 
@@ -14,6 +17,7 @@ Account.prototype = {
     if(amount > this.balance) {
       throw 'Withdrawl amount exceeds current balance'
     }
+
     return this.balance -= amount
   }
 

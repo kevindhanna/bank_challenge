@@ -13,6 +13,12 @@ describe('Account', function() {
 
       expect(this.account.deposit(500)).toEqual(1000)
     })
+
+    it('doesnt allow negative deposits', function() {
+      var self = this
+
+      expect(function() {self.account.deposit(-500)}).toThrow('Amount must be positive')
+    })
   })
 
   describe('withdraw', function() {
@@ -26,6 +32,7 @@ describe('Account', function() {
 
     it('doesnt allow withdrawls that exceed current balance', function() {
       var self = this
+      
       expect(function() {self.account.withdraw(5000)}).toThrow("Withdrawl amount exceeds current balance")
     })
   })
