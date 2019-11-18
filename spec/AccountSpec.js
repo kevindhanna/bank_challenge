@@ -14,4 +14,13 @@ describe('Account', function() {
       expect(this.account.deposit(500)).toEqual(1000)
     })
   })
+
+  describe('withdraw', function() {
+    beforeEach(function() {
+      this.account.deposit(2000)
+    })
+    it('returns the new balance', function() {
+      expect(this.account.withdraw(500)).toEqual(1500)
+    })
+  })
 })
