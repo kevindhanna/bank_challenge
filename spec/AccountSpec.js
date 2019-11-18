@@ -42,4 +42,17 @@ describe('Account', function() {
       expect(function() {self.account.withdraw(5000)}).toThrow("Withdrawl amount exceeds current balance")
     })
   })
+
+  describe('printStatement', function() {
+    beforeEach(function() {
+      this.printer = jasmine.createSpyObj('printer', ['print'])
+      this.account = new Account(this.printer)
+    })
+
+    it('sends the account information to the printer', function() {
+      this.account.printStatement()
+
+      expect(this.printer.print).toHaveBeenCalled()
+    })
+  })
 })

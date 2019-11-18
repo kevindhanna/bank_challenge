@@ -1,6 +1,6 @@
-function Account() {
-
+function Account(printer) {
   this.balance = 0
+  this.printer = printer
 
 }
 
@@ -21,6 +21,10 @@ Account.prototype = {
     }
 
     return this.balance -= amount
+  },
+
+  printStatement: function() {
+    this.printer.print()
   }
 
 }
