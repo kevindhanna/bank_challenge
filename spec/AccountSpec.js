@@ -25,7 +25,8 @@ describe('Account', function() {
     })
 
     it('doesnt allow withdrawls that exceed current balance', function() {
-      expect(function() {this.account.withdraw(5000)}).toThrow("Withdrawl amount exceeds current balance")
+      var self = this
+      expect(function() {self.account.withdraw(5000)}).toThrow("Withdrawl amount exceeds current balance")
     })
   })
 })

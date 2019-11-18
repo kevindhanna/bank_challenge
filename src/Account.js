@@ -11,7 +11,10 @@ Account.prototype = {
   },
 
   withdraw: function(amount) {
+    if(amount > this.balance) {
+      throw 'Withdrawl amount exceeds current balance'
+    }
     return this.balance -= amount
   }
-  
+
 }
