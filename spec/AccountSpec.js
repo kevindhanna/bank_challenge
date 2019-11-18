@@ -42,7 +42,7 @@ describe('Account', function() {
       expect(function() {self.account.withdraw(5000)}).toThrow("Withdrawl amount exceeds current balance")
     })
   })
-
+  
   describe('printStatement', function() {
     beforeEach(function() {
       this.printer = jasmine.createSpyObj('printer', ['print'])
