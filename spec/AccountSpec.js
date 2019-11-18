@@ -64,14 +64,19 @@ describe('Account', function() {
 
   describe('printStatement', function() {
     beforeEach(function() {
-      this.printer = jasmine.createSpyObj('printer', ['print'])
+      this.printer = {print: function() {}}
+      spyOn(this.printer, 'print').and.returnValue('a statement')
       this.account = new Account(this.printer)
     })
 
     it('sends the account information to the printer', function() {
       this.account.printStatement()
-
+      
       expect(this.printer.print).toHaveBeenCalledWith(this.account.transactions)
+    })
+    
+    it('returns the printed statement', function() {
+      expect(this.account.printStatement()).toEqual('a statement')
     })
   })
 })

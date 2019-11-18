@@ -36,7 +36,7 @@
     },
   
     printStatement: function() {
-      this.printer.print(this.transactions)
+      return this.printer.print(this.transactions)
     }
     
   }
