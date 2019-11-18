@@ -34,10 +34,10 @@ Account.prototype = {
   },
 
   addTransaction: function(method, amount, date) {
-    this.transactions.push({
-      [method] : amount,
-      date: date
-    })
+    obj = {}
+    obj[method] = amount
+    obj.date = date
+    this.transactions.push(obj)
   }
 
 }
