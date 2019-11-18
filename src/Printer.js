@@ -16,9 +16,8 @@
     }
   }
 
-  function makeLine(transaction) {
-    var bar = " || "
-    return "\n" + transaction.date + bar + transaction.credit + bar + bar + "\n"
+  function makeLine(trans) {
+    return `\n${trans.date} || ${trans.credit || ""} || ${trans.debit || ""} || ${trans.balance}\n`
   }
 
   exports.StatementPrinter = StatementPrinter
