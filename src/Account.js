@@ -17,22 +17,23 @@
       if(amount <= 0) {
         throw 'Amount must be positive'
       }
-  
+      this.balance += amount
       addTransaction('credit', amount, date)
-  
-      return this.balance += amount
+      
+      return this.balance 
     },
-  
+    
     withdraw: function(amount, date) {
       if(amount > this.balance) {
         throw 'Withdrawl amount exceeds current balance'
       } else if (amount <= 0) {
         throw 'Amount must be positive'
       }
-  
+      
+      this.balance -= amount
       addTransaction('debit', amount, date)
   
-      return this.balance -= amount
+      return this.balance
     },
   
     printStatement: function() {
@@ -46,6 +47,7 @@
     var obj = {}
     obj[method] = amount
     obj.date = date
+    obj.balance = self.balance
     self.transactions.push(obj)
   }
 

@@ -26,7 +26,8 @@ describe('Account', function() {
 
       expect(this.account.transactions).toEqual([{
         credit: 500,
-        date: this.date
+        date: this.date,
+        balance: 500
       }])
     })
   })
@@ -57,7 +58,8 @@ describe('Account', function() {
       
       expect(this.account.transactions[1]).toEqual({
         debit: 500,
-        date: this.date
+        date: this.date,
+        balance: 1500
       })
     })
   })
