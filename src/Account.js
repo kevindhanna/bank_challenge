@@ -44,11 +44,11 @@
     
 
   function addTransaction(method, amount, date) {
-    var obj = {}
-    obj[method] = amount
-    obj.date = date
-    obj.balance = self.balance
-    self.transactions.unshift(obj)
+    self.transactions.unshift({
+      [method]: amount,
+      date: date,
+      balance: self.balance
+    })
   }
 
   exports.Account = Account
