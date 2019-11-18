@@ -9,7 +9,11 @@
   StatementPrinter.prototype = {
     print: function(transactions) {
       if (transactions) {
-        return "\n" + HEADER + makeLine(transactions[0])
+        var statement = "\n" + HEADER
+        transactions.forEach(transaction => {
+          statement += makeLine(transaction)
+        });
+        return statement + "\n"
       } else {
         return "\n" + HEADER + "\n" 
       }
@@ -17,7 +21,7 @@
   }
 
   function makeLine(trans) {
-    return `\n${trans.date} || ${trans.credit || ""} || ${trans.debit || ""} || ${trans.balance}\n`
+    return `\n${trans.date} || ${trans.credit || ""} || ${trans.debit || ""} || ${trans.balance}`
   }
 
   exports.StatementPrinter = StatementPrinter
