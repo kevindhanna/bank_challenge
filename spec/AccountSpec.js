@@ -19,6 +19,15 @@ describe('Account', function() {
 
       expect(function() {self.account.deposit(-500)}).toThrow('Amount must be positive')
     })
+
+    it('adds the transaction to the transaction history', function() {
+      this.account.deposit(500, "12-12-2012")
+      
+      expect(this.account.transactions).toEqual([{
+        credit: 500,
+        date: "12-12-2012"
+      }])
+    })
   })
   
   describe('withdraw', function() {

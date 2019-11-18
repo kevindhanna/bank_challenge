@@ -1,15 +1,22 @@
 function Account(printer) {
   this.balance = 0
+  this.transactions = []
   this.printer = printer
 
 }
 
 Account.prototype = {
   
-  deposit: function(amount) {
+  deposit: function(amount, date) {
     if(amount <= 0) {
       throw 'Amount must be positive'
     }
+
+    this.transactions.push({
+      credit: amount,
+      date: date
+    })
+
     return this.balance += amount
   },
 
