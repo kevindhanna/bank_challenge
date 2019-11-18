@@ -11,7 +11,7 @@ module.exports = function (config) {
       },
       plugins: [
           'karma-jasmine',
-          'karma-phantomjs-launcher',
+          'karma-chrome-launcher',
           'karma-coverage',
       ],
       reporters: ['progress', 'coverage'],
@@ -19,7 +19,7 @@ module.exports = function (config) {
       colors: true,
       logLevel: config.LOG_DEBUG,
       autowatch: true,
-      browsers: ['PhantomJS'],
+      browsers: ['ChromeHeadless'],
       singleRun: false,
       concurrency: Infinity,
       coverageReporter: {

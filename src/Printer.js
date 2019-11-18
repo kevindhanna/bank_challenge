@@ -10,9 +10,11 @@
     print: function(transactions) {
       if (transactions) {
         var statement = "\n" + HEADER
+
         transactions.forEach(transaction => {
           statement += makeLine(transaction)
         });
+        
         return statement + "\n"
       } else {
         return "\n" + HEADER + "\n" 
