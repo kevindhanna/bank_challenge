@@ -8,10 +8,6 @@ describe('Account', function() {
       expect(this.account.deposit(500)).toEqual(500)
     })
 
-    it('returns the new balance', function() {
-      expect(this.account.deposit(1000)).toEqual(1000)
-    })
-
     it('adds to the existing balance', function() {
       this.account.deposit(500)
 
@@ -24,12 +20,8 @@ describe('Account', function() {
       this.account.deposit(2000)
     })
 
-    it('returns the new balance', function() {
+    it('returns the new reduced balance', function() {
       expect(this.account.withdraw(500)).toEqual(1500)
-    })
-
-    it('returns the new balance', function() {
-      expect(this.account.withdraw(1000)).toEqual(1000)
     })
 
     it('doesnt allow withdrawls that exceed current balance', function() {
