@@ -30,7 +30,7 @@ Account.prototype = {
   },
 
   printStatement: function() {
-    this.printer.print()
+    this.printer.print(this.transactions)
   },
 
   addTransaction: function(method, amount, date) {

@@ -61,7 +61,7 @@ describe('Account', function() {
       })
     })
   })
-  
+
   describe('printStatement', function() {
     beforeEach(function() {
       this.printer = jasmine.createSpyObj('printer', ['print'])
@@ -71,7 +71,7 @@ describe('Account', function() {
     it('sends the account information to the printer', function() {
       this.account.printStatement()
 
-      expect(this.printer.print).toHaveBeenCalled()
+      expect(this.printer.print).toHaveBeenCalledWith(this.account.transactions)
     })
   })
 })
