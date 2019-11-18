@@ -20,14 +20,20 @@ describe('Account', function() {
       expect(function() {self.account.deposit(-500)}).toThrow('Amount must be positive')
     })
   })
-
+  
   describe('withdraw', function() {
     beforeEach(function() {
       this.account.deposit(2000)
     })
-
+    
     it('returns the new reduced balance', function() {
       expect(this.account.withdraw(500)).toEqual(1500)
+    })
+    
+    it('doesnt allow negative withdrawls', function() {
+      var self = this
+  
+      expect(function() {self.account.withdraw(-500)}).toThrow('Amount must be positive')
     })
 
     it('doesnt allow withdrawls that exceed current balance', function() {

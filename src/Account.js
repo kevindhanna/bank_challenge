@@ -16,6 +16,8 @@ Account.prototype = {
   withdraw: function(amount) {
     if(amount > this.balance) {
       throw 'Withdrawl amount exceeds current balance'
+    } else if (amount <= 0) {
+      throw 'Amount must be positive'
     }
 
     return this.balance -= amount
