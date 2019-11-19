@@ -1,4 +1,4 @@
-const Account = require('../src/Account')
+// const Account = require('../src/Account')
 
 
 describe('Account', function() {
@@ -22,6 +22,13 @@ describe('Account', function() {
       var self = this
 
       expect(function() {self.account.deposit(-500, this.date)}).toThrow('Amount must be positive')
+    })
+    
+    it('doesnt allow transactions older than the most recent', function() {
+      var self = this
+      this.account.deposit(500, '12-12-2012')
+
+      expect(function() {self.account.deposit(500, '12-12-2011')}).toThrow('Date cannot be older than last transaction')
     })
 
     it('adds the credit to the transaction history', function() {

@@ -16,7 +16,11 @@
     deposit: function(amount, date) {
       if(amount <= 0) {
         throw 'Amount must be positive'
+      } 
+      if (this.transactions.length > 0) {
+        checkDate(date)
       }
+      
       this.balance += amount
       addTransaction('credit', amount, date)
       
@@ -42,13 +46,20 @@
     
   }
     
-
   function addTransaction(method, amount, date) {
     self.transactions.unshift({
       [method]: amount,
       date: date,
       balance: self.balance
     })
+  }
+
+  function checkDate(date) {
+    var compareDate = date.split().reverse().join()
+    var lastTransactionDate = self.transactions[0].date.split().reverse().join()
+    if (new Date(compareDate) < new Date(lastTransactionDate)) {
+      throw 'Date cannot be older than last transaction'
+    }
   }
 
   exports.Account = Account

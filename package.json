@@ -15,7 +15,6 @@
     "karma-jasmine": "^2.0.1",
     "karma-phantomjs-launcher": "^1.0.4"
   },
-  "dependencies": {},
   "scripts": {
     "test": "karma start karma.conf.js",
     "lint": "npx eslint ."
