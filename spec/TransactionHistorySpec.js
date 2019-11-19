@@ -24,11 +24,13 @@ describe('TransactionHistory', function() {
       ])
     })
 
-    it('doesnt allow deposits older than the most recent transaction', function() {
-      var self = this
-      this.transactionHistory.addTransaction('credit', 500, '12-12-2012', 500)
-
-      expect(function() {self.transactionHistory.addTransaction('credit', 500, '12-12-2011', 500)}).toThrow('Date cannot be older than last transaction')
-    })  
+    describe('checkDate', function() {
+      it('doesnt allow deposits older than the most recent transaction', function() {
+        var self = this
+        this.transactionHistory.addTransaction('credit', 500, '12-12-2013', 500)
+  
+        expect(function() {self.transactionHistory.checkDate('12-12-2012')}).toThrow('Date cannot be older than last transaction')
+      })  
+    })
   })
 })
