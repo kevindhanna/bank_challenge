@@ -1,3 +1,3 @@
 (function(exports) {
-  exports.account = new Account(new StatementPrinter)
+  exports.account = new Account
 })(this)

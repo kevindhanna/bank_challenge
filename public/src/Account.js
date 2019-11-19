@@ -5,7 +5,7 @@
   function Account(printer) {
     this.balance = 0
     this.transactions = []
-    this.printer = printer
+    this.printer = printer || new StatementPrinter
     
     self = this
   }

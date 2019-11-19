@@ -1,6 +1,3 @@
-// const Account = require('../src/Account')
-
-
 describe('Account', function() {
   beforeEach(function() {
     this.account = new Account
