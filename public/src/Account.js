@@ -25,6 +25,7 @@
       if(amount > this.balance) {
         throw 'Withdrawl amount exceeds current balance'
       } 
+      this.history.checkDate(date)
       this.history.addTransaction('debit', amount, date)
       
       return this.balance -= amount
