@@ -2,9 +2,9 @@
   
   var self
 
-  function Account(printer) {
+  function Account(printer, history) {
     this.balance = 0
-    this.transactions = []
+    this.history = history || new TransactionHistory
     this.printer = printer || new StatementPrinter
     
     self = this
@@ -15,50 +15,25 @@
     
     deposit: function(amount, date) {
       validateAmount(amount)
-      checkDate(date)
+      this.history.addTransaction('credit', amount, date)
 
-      this.balance += amount
-      addTransaction('credit', amount, date)
-      
-      return this.balance 
+      return this.balance += amount
     },
     
     withdraw: function(amount, date) {
       validateAmount(amount)
-      checkDate(date)
       if(amount > this.balance) {
         throw 'Withdrawl amount exceeds current balance'
       } 
+      this.history.addTransaction('debit', amount, date)
       
-      this.balance -= amount
-      addTransaction('debit', amount, date)
-  
-      return this.balance
+      return this.balance -= amount
     },
   
     printStatement: function() {
-      return this.printer.print(this.transactions)
+      return this.printer.printStatement(this.history.transactions)
     }
     
-  }
-
-  function addTransaction(method, amount, date) {
-    self.transactions.unshift({
-      [method]: amount,
-      date: date,
-      balance: self.balance
-    })
-  }
-
-  function checkDate(date) {
-    if (self.transactions.length > 0) {
-      var compareDate = new Date(date.split().reverse().join())
-      var lastTransactionDate = new Date(self.transactions[0].date.split().reverse().join())
-      
-      if (compareDate < lastTransactionDate) {
-        throw 'Date cannot be older than last transaction'
-      }
-    }
   }
 
   function validateAmount(amount) {
