@@ -15,6 +15,7 @@
     
     deposit: function(amount, date) {
       validateAmount(amount)
+      this.history.checkDate(date)
       this.history.addTransaction('credit', amount, date)
 
       return this.balance += amount

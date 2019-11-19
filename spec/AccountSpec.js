@@ -10,7 +10,7 @@ describe('Account', function() {
     spyOn(this.transactionHistory, 'transactions')
     spyOn(this.transactionHistory, 'addTransaction')
     spyOn(this.transactionHistory, 'checkDate')
-    
+
     this.account = new Account (this.printer, this.transactionHistory)
     this.date = '12-12-2012"'
   })
@@ -30,6 +30,11 @@ describe('Account', function() {
       var self = this
 
       expect(function() {self.account.deposit(-500, this.date)}).toThrow('Amount must be positive')
+    })
+
+    it('checks the date with the transactionHistory', function() {
+      this.account.deposit(500, this.date)
+      expect(this.transactionHistory.checkDate).toHaveBeenCalledWith(this.date)
     })
 
     it('adds the credit to the transaction history', function() {
