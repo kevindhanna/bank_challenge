@@ -52,10 +52,10 @@
 
   function checkDate(date) {
     if (self.transactions.length > 0) {
-      var compareDate = date.split().reverse().join()
-      var lastTransactionDate = self.transactions[0].date.split().reverse().join()
+      var compareDate = new Date(date.split().reverse().join())
+      var lastTransactionDate = new Date(self.transactions[0].date.split().reverse().join())
       
-      if (new Date(compareDate) < new Date(lastTransactionDate)) {
+      if (compareDate < lastTransactionDate) {
         throw 'Date cannot be older than last transaction'
       }
     }
