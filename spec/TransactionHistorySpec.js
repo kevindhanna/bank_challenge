@@ -15,6 +15,14 @@ describe('TransactionHistory', function() {
         {credit: 500, date: '12-12-2012', balance: 500}
       ])
     })
+
+    it('adds a debit transaction to the history', function() {
+      this.transactionHistory.addTransaction('debit', 500, '12-12-2012', 500)
+
+      expect(this.transactionHistory.transactions).toEqual([
+        {debit: 500, date: '12-12-2012', balance: 500}
+      ])
+    })
     // it('doesnt allow deposits older than the most recent transaction', function() {
     //   var self = this
     //   this.account.deposit(500, '12-12-2012')
