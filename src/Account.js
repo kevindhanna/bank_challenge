@@ -14,13 +14,9 @@
   Account.prototype = {
     
     deposit: function(amount, date) {
-      if(amount <= 0) {
-        throw 'Amount must be positive'
-      } 
-      if (this.transactions.length > 0) {
-        checkDate(date)
-      }
-      
+      validateAmount(amount)
+      checkDate(date)
+
       this.balance += amount
       addTransaction('credit', amount, date)
       
@@ -28,11 +24,11 @@
     },
     
     withdraw: function(amount, date) {
+      validateAmount(amount)
+      checkDate(date)
       if(amount > this.balance) {
         throw 'Withdrawl amount exceeds current balance'
-      } else if (amount <= 0) {
-        throw 'Amount must be positive'
-      }
+      } 
       
       this.balance -= amount
       addTransaction('debit', amount, date)
@@ -45,7 +41,7 @@
     }
     
   }
-    
+
   function addTransaction(method, amount, date) {
     self.transactions.unshift({
       [method]: amount,
@@ -55,11 +51,20 @@
   }
 
   function checkDate(date) {
-    var compareDate = date.split().reverse().join()
-    var lastTransactionDate = self.transactions[0].date.split().reverse().join()
-    if (new Date(compareDate) < new Date(lastTransactionDate)) {
-      throw 'Date cannot be older than last transaction'
+    if (self.transactions.length > 0) {
+      var compareDate = date.split().reverse().join()
+      var lastTransactionDate = self.transactions[0].date.split().reverse().join()
+      
+      if (new Date(compareDate) < new Date(lastTransactionDate)) {
+        throw 'Date cannot be older than last transaction'
+      }
     }
+  }
+
+  function validateAmount(amount) {
+    if (amount <= 0) {
+      throw 'Amount must be positive'
+    } 
   }
 
   exports.Account = Account

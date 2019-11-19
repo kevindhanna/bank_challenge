@@ -24,7 +24,7 @@ describe('Account', function() {
       expect(function() {self.account.deposit(-500, this.date)}).toThrow('Amount must be positive')
     })
     
-    it('doesnt allow transactions older than the most recent', function() {
+    it('doesnt allow deposits older than the most recent transaction', function() {
       var self = this
       this.account.deposit(500, '12-12-2012')
 
@@ -60,7 +60,14 @@ describe('Account', function() {
     it('doesnt allow withdrawls that exceed current balance', function() {
       var self = this
       
-      expect(function() {self.account.withdraw(5000, this.date)}).toThrow("Withdrawl amount exceeds current balance")
+      expect(function() {self.account.withdraw(5000, self.date)}).toThrow("Withdrawl amount exceeds current balance")
+    })
+
+    it('doesnt allow withdrawls older than the most recent transaction', function() {
+      var self = this
+      this.account.withdraw(500, '12-12-2012')
+
+      expect(function() {self.account.withdraw(500, '12-12-2011')}).toThrow('Date cannot be older than last transaction')
     })
 
     it('adds the debit to the transaction history', function() {
