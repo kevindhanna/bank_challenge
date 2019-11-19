@@ -1,13 +1,9 @@
 (function(exports) {
   
-  var self
-
   function Account(printer, history) {
     this.balance = 0
     this.history = history || new TransactionHistory
     this.printer = printer || new StatementPrinter
-    
-    self = this
   }
   
   

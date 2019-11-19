@@ -7,7 +7,7 @@
   }
   
   StatementPrinter.prototype = {
-    print: function(transactions) {
+    printStatement: function(transactions) {
       if (transactions) {
         var statement = "\n" + HEADER
 

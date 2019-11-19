@@ -1,9 +1,7 @@
 (function(exports) {
 
-  var self
   function TransactionHistory() {
     this.transactions = []
-    self = this
   }
   
   TransactionHistory.prototype = {
@@ -27,7 +25,7 @@
       }
     }
   }
-    
 
   exports.TransactionHistory = TransactionHistory
+
 })(this)

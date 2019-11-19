@@ -31,7 +31,7 @@ describe('Bank Account', function() {
     it('adds the credit to the transaction history', function() {
       this.account.deposit(500, this.date)
 
-      expect(this.account.transactions).toEqual([{
+      expect(this.account.history.transactions).toEqual([{
         credit: 500,
         date: this.date,
         balance: 500
@@ -70,7 +70,7 @@ describe('Bank Account', function() {
     it('adds the debit to the transaction history', function() {
       this.account.withdraw(500, this.date)
       
-      expect(this.account.transactions[0]).toEqual({
+      expect(this.account.history.transactions[0]).toEqual({
         debit: 500,
         date: this.date,
         balance: 1500

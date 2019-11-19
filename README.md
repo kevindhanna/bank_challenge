@@ -54,3 +54,4 @@ The Account class stores the balance, transactions from oldest to newest, valida
 the StatementPrinter class accepts a list of transactions, formats each into a row showing the transaction details and appends that to the statement string, which is returned to the Account class to be returned to the user.
 To stop inconsistent balances showing on the statement, I added a validation that checks the date of the transaction is new than the most recent transaction.
 To keep the account balance consistent, I disallowed transactions for negative balances.
+So that the user can't access parts of the code that they don't need to, I used the Module pattern to obfuscate some helper functions of each class.
