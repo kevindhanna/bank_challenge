@@ -1,3 +1,5 @@
+const StatementPrinter = require('../src/StatementPrinter')
+
 describe('StatementPrinter', function() {
   beforeEach(function() {
     this.statementPrinter = new StatementPrinter
