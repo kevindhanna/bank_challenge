@@ -16,9 +16,9 @@
     deposit: function(amount, date) {
       validateAmount(amount)
       this.history.checkDate(date)
-      this.history.addTransaction('credit', amount, date)
+      this.history.addTransaction('credit', amount, date, this.balance += amount)
 
-      return this.balance += amount
+      return this.balance
     },
     
     withdraw: function(amount, date) {
@@ -27,9 +27,9 @@
         throw 'Withdrawl amount exceeds current balance'
       } 
       this.history.checkDate(date)
-      this.history.addTransaction('debit', amount, date)
+      this.history.addTransaction('debit', amount, date, this.balance -= amount)
       
-      return this.balance -= amount
+      return this.balance
     },
   
     printStatement: function() {

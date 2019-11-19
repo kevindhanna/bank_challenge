@@ -32,15 +32,16 @@ describe('Account', function() {
       expect(function() {self.account.deposit(-500, this.date)}).toThrow('Amount must be positive')
     })
 
-    it('checks the date with the transactionHistory', function() {
+    it('checks the deposit date with the transactionHistory', function() {
       this.account.deposit(500, this.date)
+
       expect(this.transactionHistory.checkDate).toHaveBeenCalledWith(this.date)
     })
 
     it('adds the credit to the transaction history', function() {
       this.account.deposit(500, this.date)
 
-      expect(this.transactionHistory.addTransaction).toHaveBeenCalledWith('credit', 500, this.date)
+      expect(this.transactionHistory.addTransaction).toHaveBeenCalledWith('credit', 500, this.date, 500)
     })
   })
   
@@ -65,15 +66,16 @@ describe('Account', function() {
       expect(function() {self.account.withdraw(5000, self.date)}).toThrow("Withdrawl amount exceeds current balance")
     })
 
-    it('checks the date with the transactionHistory', function() {
+    it('checks the withdrawl date with the transactionHistory', function() {
       this.account.withdraw(500, this.date)
+
       expect(this.transactionHistory.checkDate).toHaveBeenCalledWith(this.date)
     })
     
     it('adds the debit to the transaction history', function() {
       this.account.withdraw(500, this.date)
       
-      expect(this.transactionHistory.addTransaction).toHaveBeenCalledWith('debit', 500, this.date)
+      expect(this.transactionHistory.addTransaction).toHaveBeenCalledWith('debit', 500, this.date, 1500)
     })
   })
 
