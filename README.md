@@ -47,4 +47,10 @@ A new account can be created with `var myAccount = new Account`
 ### Screenshots
 ![](https://i.imgur.com/WnJctaE.png)
 
+### Methodology
 
+I decided that handling the account transactions and printing them were two separate functions, so created an Account and StatementPrinter.
+The Account class stores the transactions from oldest to newest, validates input and delegates printing statements to the StatementPrinter class.
+the StatementPrinter class accepts a list of transactions, formats each into a row showing the transaction details and appends that to the statement string, which is returned to the Account class to be outputted.
+To stop inconsistent balances showing on the statement, I added a validation that checks the date of the transaction is new than the most recent transaction.
+To keep the account balance consistent, I disallowed transactions for negative balances.
