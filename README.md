@@ -40,10 +40,11 @@ Returns a table showing date, amount, credit, debit, balance
   19-11-2019 ||  || 500 || 500
   19-11-2019 || 1000 ||  || 1000
   ```
-
-### Screenshots
-[Imgur](https://i.imgur.com/WnJctaE.png)
-
 ### Recreate Account
 
 A new account can be created with `var myAccount = new Account`
+
+### Screenshots
+![](https://i.imgur.com/WnJctaE.png)
+
+
