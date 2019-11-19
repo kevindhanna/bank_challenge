@@ -14,7 +14,7 @@
       this.history.checkDate(date)
       this.history.addTransaction('credit', amount, date, this.balance += amount)
 
-      return this.balance
+      return twoPlacedFloat(this.balance)
     },
     
     withdraw: function(amount, date) {
@@ -25,7 +25,7 @@
       this.history.checkDate(date)
       this.history.addTransaction('debit', amount, date, this.balance -= amount)
       
-      return this.balance
+      return twoPlacedFloat(this.balance)
     },
   
     printStatement: function() {
@@ -38,6 +38,10 @@
     if (amount <= 0) {
       throw 'Amount must be positive'
     } 
+  }
+
+  function twoPlacedFloat(number) {
+   return parseFloat(number).toFixed(2)
   }
 
   exports.Account = Account

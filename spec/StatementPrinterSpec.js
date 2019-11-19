@@ -13,7 +13,7 @@ describe('StatementPrinter', function() {
     
     it('returns the given transaction in the table', function() {
       expect(this.statementPrinter.printStatement(this.transactions)).toEqual(
-        "\ndate || credit || debit || balance\n12-12-2012 || 500 ||  || 500\n"
+        "\ndate || credit || debit || balance\n12-12-2012 || 500.00 ||  || 500.00\n"
       )
     })
       
@@ -25,8 +25,8 @@ describe('StatementPrinter', function() {
       expect(this.statementPrinter.printStatement(this.transactions)).toEqual(
       `
 date || credit || debit || balance
-13-12-2013 ||  || 500 || 0
-12-12-2012 || 500 ||  || 500
+13-12-2013 ||  || 500.00 || 
+12-12-2012 || 500.00 ||  || 500.00
 `
       )
     })

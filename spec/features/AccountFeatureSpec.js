@@ -6,13 +6,13 @@ describe('Bank Account', function() {
 
   describe('Deposit', function() {
     it('returns the new the balance', function(){
-      expect(this.account.deposit(1000, '10-01-2012')).toEqual(1000)
+      expect(this.account.deposit(1000, '10-01-2012')).toEqual("1000.00")
     })
 
     it('adds to the existing balance', function() {
       this.account.deposit(1000, '10-01-2012')
 
-      expect(this.account.deposit(2000, '13-01-2012')).toEqual(3000)
+      expect(this.account.deposit(2000, '13-01-2012')).toEqual("3000.00")
     })
 
     it('doesnt allow negative deposits', function() {
@@ -45,7 +45,7 @@ describe('Bank Account', function() {
     })
     
     it('returns the new reduced balance', function() {
-      expect(this.account.withdraw(500, this.date)).toEqual(1500)
+      expect(this.account.withdraw(500, this.date)).toEqual('1500.00')
     })
     
     it('doesnt allow negative withdrawls', function() {
@@ -85,8 +85,8 @@ describe('Bank Account', function() {
 
       expect(this.account.printStatement()).toEqual(`
 date || credit || debit || balance
-12-12-2013 ||  || 500 || 0
-12-12-2012 || 500 ||  || 500
+12-12-2013 ||  || 500.00 || 
+12-12-2012 || 500.00 ||  || 500.00
 `)
     })
   })

@@ -17,13 +17,13 @@ describe('Account', function() {
 
   describe('deposit', function() {
     it('returns the new balance', function() {
-      expect(this.account.deposit(500, this.date)).toEqual(500)
+      expect(this.account.deposit(500, this.date)).toEqual("500.00")
     })
 
     it('adds to the existing balance', function() {
       this.account.deposit(500, this.date)
 
-      expect(this.account.deposit(500, this.date)).toEqual(1000)
+      expect(this.account.deposit(500, this.date)).toEqual('1000.00')
     })
 
     it('doesnt allow negative deposits', function() {
@@ -51,7 +51,7 @@ describe('Account', function() {
     })
     
     it('returns the new reduced balance', function() {
-      expect(this.account.withdraw(500, this.date)).toEqual(1500)
+      expect(this.account.withdraw(500, this.date)).toEqual('1500.00')
     })
     
     it('doesnt allow negative withdrawls', function() {
