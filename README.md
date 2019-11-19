@@ -22,14 +22,14 @@ Deposits return the new account balance
 _Browser console..._  
 `account.deposit(1000, "19-11-2019")`  
 =>  
-  `1000`
+  `1000.00`
 
 ### Withdrawl
 Withdrawl return the new account balance  
 _Browser console..._  
 `account.withdraw(500, "19-11-2019")`  
 =>  
-  `500`
+  `500.00`
 
 ### Print Statement
 Returns a table showing date, amount, credit, debit, balance  
@@ -37,15 +37,15 @@ Returns a table showing date, amount, credit, debit, balance
 =>  
   ```
   date || credit || debit || balance
-  19-11-2019 ||  || 500 || 500
-  19-11-2019 || 1000 ||  || 1000
+  19-11-2019 ||  || 500.00 || 500.00
+  19-11-2019 || 1000.00 ||  || 1000.00
   ```
 ### Recreate Account
 
 A new account can be created with `var myAccount = new Account`
 
 ### Screenshots
-![](https://i.imgur.com/WnJctaE.png)
+![](https://i.imgur.com/uckwVSy.png)
 
 ### Methodology
 
